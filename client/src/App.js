@@ -64,6 +64,7 @@ function App() {
     <form className="update-form" onSubmit={(e)=>{updateItem(e)}} >
       <input className="update-new-input" type="text" placeholder="New Item" onChange={e=>{setUpdateItemText(e.target.value)}} value={updateItemText} />
       <button className="update-new-btn" type="submit">Update</button>
+      <input type="checkbox"  onChange={e => {setItemText(e.target.value)} } value={itemText} />
     </form>
   )
 
@@ -72,6 +73,8 @@ function App() {
       <h1>Todo List</h1>
       <form className="form" onSubmit={e => addItem(e)}>
         <input type="text" placeholder='Add Todo Item' onChange={e => {setItemText(e.target.value)} } value={itemText} />
+      {/* <input type="checkbox"  onChange={e => {setItemText(e.target.value)} } value={itemText} /> */}
+        
         <button type="submit">Add</button>
       </form>
       <div className="todo-listItems">
@@ -83,6 +86,7 @@ function App() {
               ? renderUpdateForm()
               : <>
                   <p className="item-content">{item.item}</p>
+                  <input type="checkbox"  onChange={e => {setItemText(e.target.value)} } value={itemText} />
                   <button className="update-item" onClick={()=>{setIsUpdating(item._id)}}>Update</button>
                   <button className="delete-item" onClick={()=>{deleteItem(item._id)}}>Delete</button>
                 </>
